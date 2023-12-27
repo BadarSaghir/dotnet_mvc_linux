@@ -26,5 +26,9 @@ public class TodoController : Controller
 
         return View(objTodoList);
     }
+     public IActionResult Create()
+    {
 
+        return View();
+    }
 }

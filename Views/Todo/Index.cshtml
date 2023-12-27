@@ -15,13 +15,16 @@
 
             <p class="mb-2"><span class="h2 me-2">Todos</span> <span
                 class="badge bg-danger">checklist</span></p>
-
+ <a  class="btn btn-primary btn-rounded" asp-controller="Todo" asp-action="Create">Add Todo</a>
             <ul class="list-group rounded-0">
                   @foreach (var obj in Model)
               {
 
                     <li class="list-group-item border-0 d-flex align-items-center ps-0" >
+                      @if( @obj.Status=="completed"){
                       <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."  checked />
+                      }
+
                       <s>@obj.Name</s>
                     </li>
 
