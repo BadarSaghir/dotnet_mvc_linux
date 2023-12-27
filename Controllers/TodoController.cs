@@ -89,7 +89,7 @@ public class TodoController : Controller
     // }
 
     // [HttpPost]
-    [ValidateAntiForgeryToken]
+    // [ValidateAntiForgeryToken]
     public IActionResult Delete(int? id)
     {
         var todoFromDb = _db.Todos.Find(id);
