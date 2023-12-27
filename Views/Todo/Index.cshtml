@@ -17,18 +17,37 @@
                 class="badge bg-danger">checklist</span></p>
  <a  class="btn btn-primary btn-rounded" asp-controller="Todo" asp-action="Create">Add Todo</a>
             <ul class="list-group rounded-0">
-                  @foreach (var obj in Model)
-              {
+              <table>
+                <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Status</td>
+                    <td>Date Of Creation</td>
+                  </tr>
+                </thead>
+                <tbody>
+                       @foreach (var obj in Model)
+                  {
 
-                    <li class="list-group-item border-0 d-flex align-items-center ps-0" >
-                      @if( @obj.Status=="completed"){
-                      <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."  checked />
-                      }
+                        <tr>
+                        <td>@obj.Name</td>
+                        <td>@obj.Status</td>
+                        <td>@obj.CreatedAt</td>
+                       <td>
+                          <a class="text-primary" asp-controller="Todo" asp-action="Edit" asp-route-id="@obj.Id"> Edit</a>
+                       </td> 
+                      </tr>
 
-                      <s>@obj.Name</s>
-                    </li>
+                  }
 
-              }
+
+                </tbody>
+              </table>
+
+
+
+
+
             </ul>
 
             <div class="divider d-flex align-items-center my-4">
