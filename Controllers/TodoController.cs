@@ -43,4 +43,18 @@ public class TodoController : Controller
         }
         return View(obj);
     }
+
+    public IActionResult Edit(int? id)
+    {
+        if(id==null || id ==0){
+            return NotFound();
+        }
+        var todoFromDb=_db.Todos.Find(id);
+         if(todoFromDb==null){
+            return NotFound();
+        }
+
+        return View(todoFromDb);
+    }
+
 }
