@@ -44,6 +44,7 @@ public class TodoController : Controller
         return View(obj);
     }
 
+
     public IActionResult Edit(int? id)
     {
         if(id==null || id ==0){
@@ -56,5 +57,18 @@ public class TodoController : Controller
 
         return View(todoFromDb);
     }
+
+        [HttpPost]
+    [ValidateAntiForgeryToken]
+      public IActionResult Edit(Todo obj)
+    {
+        if(ModelState.IsValid){
+        _db.Todos.Update(obj);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+        }
+        return View(obj);
+    }
+
 
 }
