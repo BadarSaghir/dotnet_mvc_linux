@@ -31,4 +31,16 @@ public class TodoController : Controller
 
         return View();
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+      public IActionResult Create(Todo obj)
+    {
+        if(ModelState.IsValid){
+        _db.Todos.Add(obj);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+        }
+        return View(obj);
+    }
 }

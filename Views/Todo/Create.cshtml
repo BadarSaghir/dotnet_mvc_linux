@@ -11,10 +11,18 @@
         <div class="mb-3">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Status"></label>
+            <input asp-for="Status" class="form-control"/>
+            <span asp-validation-for="Status" class="text-danger"></span>
+
         </div>
         <div>
             <button type="submit" class="btn btn-primary" style="width: 150px;">Add</button>
-            
+             <a  class="btn btn-primary btn-rounded" asp-controller="Todo" asp-action="Index">Add Todo</a>
+
         </div>
     </div>
 </form>
