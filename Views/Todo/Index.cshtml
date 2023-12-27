@@ -38,9 +38,9 @@
                        </td> 
 
                         <td>
-                          <form>
-
-                          <button class="text-primary" asp-controller="Todo" asp-action="Delete" type="submit"  asp-route-id="@obj.Id"> Delete</button>
+                          <form method="post">
+                          <input type="text" hidden>
+                          <button class="text-primary" type="submit" > Delete</button>
                           </form>
                        </td> 
                       </tr>

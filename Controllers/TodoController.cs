@@ -88,7 +88,7 @@ public class TodoController : Controller
     //     return View(todoFromDb);
     // }
 
-    [HttpPost]
+    // [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Delete(int? id)
     {
