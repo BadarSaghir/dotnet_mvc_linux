@@ -36,6 +36,13 @@
                        <td>
                           <a class="text-primary" asp-controller="Todo" asp-action="Edit" asp-route-id="@obj.Id"> Edit</a>
                        </td> 
+
+                        <td>
+                          <form>
+
+                          <button class="text-primary" asp-controller="Todo" asp-action="Delete" type="submit"  asp-route-id="@obj.Id"> Delete</button>
+                          </form>
+                       </td> 
                       </tr>
 
                   }

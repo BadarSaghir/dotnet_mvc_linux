@@ -22,11 +22,11 @@ public class TodoController : Controller
     }
     public IActionResult Index()
     {
-      IEnumerable<Todo> objTodoList =  _db.Todos;
+        IEnumerable<Todo> objTodoList = _db.Todos;
 
         return View(objTodoList);
     }
-     public IActionResult Create()
+    public IActionResult Create()
     {
 
         return View();
@@ -34,12 +34,13 @@ public class TodoController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-      public IActionResult Create(Todo obj)
+    public IActionResult Create(Todo obj)
     {
-        if(ModelState.IsValid){
-        _db.Todos.Add(obj);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _db.Todos.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
         return View(obj);
     }
@@ -47,28 +48,65 @@ public class TodoController : Controller
 
     public IActionResult Edit(int? id)
     {
-        if(id==null || id ==0){
+        if (id == null || id == 0)
+        {
             return NotFound();
         }
-        var todoFromDb=_db.Todos.Find(id);
-         if(todoFromDb==null){
+        var todoFromDb = _db.Todos.Find(id);
+        if (todoFromDb == null)
+        {
             return NotFound();
         }
 
         return View(todoFromDb);
     }
 
-        [HttpPost]
+    [HttpPost]
     [ValidateAntiForgeryToken]
-      public IActionResult Edit(Todo obj)
+    public IActionResult Edit(Todo obj)
     {
-        if(ModelState.IsValid){
-        _db.Todos.Update(obj);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _db.Todos.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
         return View(obj);
     }
 
 
+    //     public IActionResult Delete(int? id)
+    // {
+    //     if(id==null || id==0){
+    //         return NotFound();
+    //     }
+    //     var todoFromDb=_db.Todos.Find(id);
+    //      if(todoFromDb==null){
+    //         return NotFound();
+    //     }
+
+    //     return View(todoFromDb);
+    // }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Delete(int? id)
+    {
+        var todoFromDb = _db.Todos.Find(id);
+        if (todoFromDb == null)
+        {
+            return NotFound();
+        }
+
+        _db.Todos.Update(todoFromDb);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
 }
+
+
+
+
+
+
