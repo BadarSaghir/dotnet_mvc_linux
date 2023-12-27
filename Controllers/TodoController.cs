@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mvc.Data;
+using mvc.Models;
 
 namespace mvc.Controllers;
 
@@ -21,9 +22,9 @@ public class TodoController : Controller
     }
     public IActionResult Index()
     {
-      var objTodoList =  _db.Todos.ToList();
+      IEnumerable<Todo> objTodoList =  _db.Todos;
 
-        return View();
+        return View(objTodoList);
     }
 
 }
