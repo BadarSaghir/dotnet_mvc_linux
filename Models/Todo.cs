@@ -1,4 +1,5 @@
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace mvc.Models
@@ -10,6 +11,7 @@ namespace mvc.Models
         [Required]
         public string? Name { get; set; }
         [Required]
+        [DisplayName("Status")]
         public string Status { get; set; } = "pending";
         public DateTime CreatedAt { get; set; } = DateTime.Now ;
         
